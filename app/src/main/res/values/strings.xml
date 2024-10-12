@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">PMDM Tarea 2</string>
+    <string name="acerca_de">Acerca de...</string>
+    <string name="imagen_del_personaje">Imagen del personaje</string>
+    <string name="nombre_del_personaje">Nombre del personaje</string>
+    <string name="descripcion_del_personaje">Descripción del personaje</string>
+    <string name="habilidades_del_personaje">Habilidades del personaje</string>
+    <string name="mario">Mario</string>
+    <string name="luigi">Luigi</string>
+    <string name="peach">Peach</string>
+    <string name="toad">Toad</string>
+    <string name="mario_detalles">Héroe principal del Reino Champiñón</string>
+    <string name="luigi_detalles">Hermano de Mario</string>
+    <string name="peach_detalles">Princesa del Reino Champiñón</string>
+    <string name="toad_detalles">Servidor del Reino Champiñón</string>
+    <string name="mario_habilidades">Salta alto y viste de rojo</string>
+    <string name="luigi_habilidades">Puede saltar más alto que Mario</string>
+    <string name="peach_habilidades">Puede flotar en el aire</string>
+    <string name="toad_habilidades">Ágil y rápido</string>
+    <string name="acerca_completo">Aplicación desarrollada por Javier Benítez García. Versión 1.0.</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="detalles_cargados_para">"Detalles cargados para "</string>
+    <string name="logo_de_la_app">Logo de la aplicación</string>
+</resources>

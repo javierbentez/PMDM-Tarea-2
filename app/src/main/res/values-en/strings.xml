@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PMDM Task 2</string>
+    <string name="acerca_de">About...</string>
+    <string name="imagen_del_personaje">Character Image</string>
+    <string name="nombre_del_personaje">Character Name</string>
+    <string name="descripcion_del_personaje">Character Description</string>
+    <string name="habilidades_del_personaje">Character Skills</string>
+    <string name="mario">Mario</string>
+    <string name="luigi">Luigi</string>
+    <string name="peach">Peach</string>
+    <string name="toad">Toad</string>
+    <string name="mario_detalles">Main hero of the Mushroom Kingdom</string>
+    <string name="luigi_detalles">Mario\'s brother</string>
+    <string name="peach_detalles">Princess of the Mushroom Kingdom</string>
+    <string name="toad_detalles">Servant of the Mushroom Kingdom</string>
+    <string name="mario_habilidades">Jumps high and wears red</string>
+    <string name="luigi_habilidades">Can jump higher than Mario</string>
+    <string name="peach_habilidades">Can float in the air</string>
+    <string name="toad_habilidades">Agile and fast</string>
+    <string name="acerca_completo">Application developed by Javier Benítez García. Version 1.0.</string>
+    <string name="aceptar">Accept</string>
+    <string name="detalles_cargados_para">"Details loaded for "</string>
+    <string name="logo_de_la_app">APP Logo</string>
+</resources>
