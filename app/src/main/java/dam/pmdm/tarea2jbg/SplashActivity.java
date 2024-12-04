@@ -28,7 +28,7 @@ public class SplashActivity extends AppCompatActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // Apply the selected language
+        // Aplicamos el idioma seleccionado
         SharedPreferences prefs = getSharedPreferences("app_prefs", MODE_PRIVATE);
         String idioma = prefs.getString("app_language", "es"); // Por defecto en español
         applyLocale(idioma);
@@ -63,6 +63,11 @@ public class SplashActivity extends AppCompatActivity {
         }, 3000);
     }
 
+    /**
+     * Aplica el idioma seleccionado a la aplicación.
+     *
+     * @param lang El código del idioma (por ejemplo, "es" para español, "en" para inglés).
+     */
     private void applyLocale(String lang) {
         Locale locale = new Locale(lang);
         Locale.setDefault(locale);
@@ -71,6 +76,7 @@ public class SplashActivity extends AppCompatActivity {
         config.setLocale(locale);
         resources.updateConfiguration(config, resources.getDisplayMetrics());
 
+        // Guardamos el idioma seleccionado en SharedPreferences
         SharedPreferences prefs = getSharedPreferences("app_prefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString("app_language", lang);

@@ -30,6 +30,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * MainActivity es la actividad principal de la aplicación que maneja la
+ * interfaz de usuario
+ * incluyendo un RecyclerView para mostrar una lista de personajes y un
+ * Navigation Drawer.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
@@ -42,13 +48,19 @@ public class MainActivity extends AppCompatActivity {
     private CharSequence mTitle;
     private androidx.appcompat.app.ActionBarDrawerToggle mDrawerToggle;
 
+    /**
+     * Método que se llama cuando se crea la actividad.
+     * 
+     * @param savedInstanceState Si la actividad se está recreando desde un estado
+     *                           previamente guardado,
+     *                           este es el estado.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Setup RecyclerView
+        // Configuramos el RecyclerView
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -77,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(personajeAdapter);
 
-        // Setup Navigation Drawer
+        // Configuramos el Navigation Drawer
         mTitle = mDrawerTitle = getTitle();
         mNavigationDrawerItemTitles = getResources().getStringArray(R.array.navigation_drawer_items_array);
         mDrawerLayout = findViewById(R.id.drawer_layout);
@@ -97,11 +109,14 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         setupDrawerToggle();
 
-        // Añadir un mensaje de Snackbar al cargar la lista de elementos que diga
+        // Añadimos un mensaje de Snackbar al cargar la lista de elementos que diga
         // "Bienvenidos al mundo de Mario".
         Snackbar.make(findViewById(R.id.drawer_layout), R.string.bienvenidos_mario, Snackbar.LENGTH_LONG).show();
     }
 
+    /**
+     * Clase interna que maneja los clics en los elementos del Navigation Drawer.
+     */
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -109,6 +124,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Maneja la selección de un elemento del Navigation Drawer.
+     * 
+     * @param position La posición del elemento seleccionado.
+     */
     private void selectItem(int position) {
         switch (position) {
             case 1:
@@ -128,30 +148,54 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout.closeDrawer(mDrawerList);
     }
 
+    /**
+     * Establece el título de la actividad.
+     * 
+     * @param title El nuevo título.
+     */
     @Override
     public void setTitle(CharSequence title) {
         mTitle = title;
         getSupportActionBar().setTitle(mTitle);
     }
 
+    /**
+     * Método que se llama después de que la actividad ha sido creada.
+     * 
+     * @param savedInstanceState Si la actividad se está recreando desde un estado
+     *                           previamente guardado,
+     *                           este es el estado.
+     */
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         mDrawerToggle.syncState();
     }
 
+    /**
+     * Configura la Toolbar.
+     */
     void setupToolbar() {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
+    /**
+     * Configura el Drawer Toggle.
+     */
     void setupDrawerToggle() {
         mDrawerToggle = new androidx.appcompat.app.ActionBarDrawerToggle(this, mDrawerLayout, toolbar,
                 R.string.app_name, R.string.app_name);
         mDrawerToggle.syncState();
     }
 
+    /**
+     * Infla el menú de opciones.
+     * 
+     * @param menu El menú de opciones.
+     * @return true si el menú se ha inflado correctamente.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -159,6 +203,12 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Maneja la selección de un elemento del menú de opciones.
+     * 
+     * @param item El elemento seleccionado.
+     * @return true si el elemento se ha manejado correctamente.
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_about) {
@@ -168,6 +218,9 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Muestra un diálogo "Acerca de".
+     */
     private void showAboutDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getString(R.string.acerca_de))
@@ -184,6 +237,12 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    /**
+     * Cambia el idioma de la aplicación.
+     * 
+     * @param lang El código del idioma (por ejemplo, "es" para español, "en" para
+     *             inglés).
+     */
     public void setLocale(String lang) {
         Locale locale = new Locale(lang);
         Locale.setDefault(locale);
@@ -192,12 +251,12 @@ public class MainActivity extends AppCompatActivity {
         config.setLocale(locale);
         resources.updateConfiguration(config, resources.getDisplayMetrics());
 
-        // Save the selected language in SharedPreferences
+        // Guardamos el idioma seleccionado en SharedPreferences
         SharedPreferences.Editor editor = getSharedPreferences("app_prefs", MODE_PRIVATE).edit();
         editor.putString("app_language", lang);
         editor.apply();
 
-        // Restart activity to apply changes
+        // Reiniciamos la actividad para aplicar los cambios
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
