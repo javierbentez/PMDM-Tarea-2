@@ -22,4 +22,5 @@
     <string name="aceptar">Accept</string>
     <string name="detalles_cargados_para">"Details loaded for "</string>
     <string name="logo_de_la_app">APP Logo</string>
+    <string name="bienvenidos_mario">Welcome to Mario\'s world!</string>
 </resources>

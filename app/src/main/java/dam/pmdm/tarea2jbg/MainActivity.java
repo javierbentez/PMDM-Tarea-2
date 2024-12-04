@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         recyclerView.setAdapter(personajeAdapter);
+
+        // Añadir un mensaje de Snackbar al cargar la lista de elementos que diga "Bienvenidos al mundo de Mario".
+        Snackbar.make(findViewById(R.id.main), R.string.bienvenidos_mario, Snackbar.LENGTH_LONG).show();
     }
 
     /**
