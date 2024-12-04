@@ -1,6 +1,9 @@
 package dam.pmdm.tarea2jbg;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -9,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.util.Locale;
 
 /**
  * Actividad que muestra una pantalla de inicio al abrir la aplicación.
@@ -23,6 +28,11 @@ public class SplashActivity extends AppCompatActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Apply the selected language
+        SharedPreferences prefs = getSharedPreferences("app_prefs", MODE_PRIVATE);
+        String idioma = prefs.getString("app_language", "es"); // Por defecto en español
+        applyLocale(idioma);
+
         super.onCreate(savedInstanceState);
 
         // Habilitamos el modo de pantalla completa
@@ -51,5 +61,19 @@ public class SplashActivity extends AppCompatActivity {
                 finish(); // Finalizamos la Splash Screen
             }
         }, 3000);
+    }
+
+    private void applyLocale(String lang) {
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Resources resources = getResources();
+        Configuration config = resources.getConfiguration();
+        config.setLocale(locale);
+        resources.updateConfiguration(config, resources.getDisplayMetrics());
+
+        SharedPreferences prefs = getSharedPreferences("app_prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("app_language", lang);
+        editor.apply();
     }
 }

@@ -22,4 +22,10 @@
     <string name="detalles_cargados_para">"Detalles cargados para "</string>
     <string name="logo_de_la_app">Logo de la aplicación</string>
     <string name="bienvenidos_mario">Bienvenidos al mundo de Mario</string>
+    <string name="inicio">Inicio</string>
+    <string name="toggleLanguage">Cambiar idioma</string>
+    <string-array name="navigation_drawer_items_array">
+        <item>Inicio</item>
+        <item>Cambiar idioma</item>
+    </string-array>
 </resources>
